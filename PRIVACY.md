@@ -31,4 +31,4 @@ Remove the extension from `chrome://extensions` and Chrome deletes everything it
 
 ## Contact
 
-Questions: YOUR_CONTACT_EMAIL
+Questions: ravikumawat7716@gmail.com
