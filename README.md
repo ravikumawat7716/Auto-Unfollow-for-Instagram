@@ -2,16 +2,7 @@
 
 Unfollows Instagram accounts that don't follow you back. It opens each profile and clicks **Following → Unfollow** with a visible cursor, the way you would by hand. It pauses between accounts, takes breaks, and keeps an Excel report of everything.
 
-There are two ways to run it. Use the Chrome extension.
-
-| | Chrome extension (use this) | Playwright bot (backup) |
-|---|---|---|
-| Runs in | Your normal Chrome, already logged in | A separate Chrome window |
-| Login | Nothing to do | Log in once in that window |
-| Install | Load the folder in Chrome | Python + `setup.bat` |
-| Start | Panel on instagram.com | `run.bat` |
-
-Playwright can't drive your everyday Chrome. Since Chrome 136, Chrome blocks automation tools from taking over your main profile, to protect your logged-in sessions. The extension doesn't have that problem, because it runs inside Chrome itself.
+It runs as a Chrome extension inside your normal Chrome, where you are already logged in.
 
 ## Chrome extension
 
@@ -19,7 +10,7 @@ Playwright can't drive your everyday Chrome. Since Chrome 136, Chrome blocks aut
 
 **1.** Right-click `build.ps1` and pick **Run with PowerShell**. It makes `dist\ig-unfollow-helper-<version>.zip` with only the extension files.
 **2.** Upload the zip in the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole).
-**3.** Fill in the listing and privacy tabs from `STORE_LISTING.md`. Host `PRIVACY.md` publicly and paste its link as the privacy policy.
+**3.** Fill in the listing and privacy tabs. Host `PRIVACY.md` publicly and paste its link as the privacy policy.
 
 For each update, raise `version` in `manifest.json` and build again.
 
@@ -61,7 +52,7 @@ It skips deleted accounts, accounts you already don't follow, and pending follow
 * **English only.** It finds buttons by their text, so keep Instagram in English.
 * **Your data stays in this browser.** Nothing is sent anywhere except Instagram.
 
-## Safety stops (both versions)
+## Safety stops
 
 It stops straight away when:
 
@@ -74,7 +65,7 @@ It won't start if the followers scan is smaller than the follower count on your 
 
 If Instagram limits you, wait at least a day, or two to be safe. Instagram doesn't allow automated actions. Slow pacing lowers the risk but can't remove it.
 
-## The Excel report (extension)
+## The Excel report
 
 Press **Excel** any time. It also downloads by itself when a run stops (you can turn this off in Settings).
 
@@ -86,23 +77,12 @@ Press **Excel** any time. It also downloads by itself when a run stops (you can 
 | Followers | Everyone who follows you, and whether you follow them back |
 | Action log | Every scan, unfollow, skip, check and stop, with times |
 
-## Playwright bot (backup)
-
-Use this only if the extension stops working. It opens its own Chrome window, which is why it isn't logged in at first. Log in to Instagram in that window once and it remembers you.
-
-**1.** Double-click `setup.bat` once. It needs Python 3.9 or newer.
-**2.** Double-click `scan.bat`, log in to Instagram in the window that opens, and wait for the scan.
-**3.** Open `Instagram Unfollow Report.xlsx`, type `yes` in the Keep column for anyone to keep, save and close.
-**4.** Double-click `test-run.bat` (5 unfollows), then `run.bat`.
-
-Settings are in `settings.json`, and accounts to always keep go in `keep.txt`. Its Excel report updates after every account, and `data/actions_log.csv` logs every action.
-
 ## Files
 
 ```
 manifest.json, popup.*, icons/   Chrome extension
 build.ps1          packs the extension into dist/ for the Chrome Web Store
-PRIVACY.md, STORE_LISTING.md      privacy policy and store listing text
+PRIVACY.md         privacy policy
 src/igApi.js       reads your lists from Instagram (read only)
 src/core.js        settings, saved data, comparing lists, safety checks
 src/ui.js          reads Instagram's page and clicks its buttons (the part to fix if Instagram changes its pages)
@@ -110,7 +90,4 @@ src/runner.js      the unfollow run, step by step, carried across page loads
 src/report.js      Excel report
 src/panel.js       the panel on instagram.com
 lib/               SheetJS library for Excel files (Apache 2.0)
-
-ig_unfollow.py     Playwright bot
-settings.json, keep.txt, *.bat, requirements.txt   Playwright bot files
 ```

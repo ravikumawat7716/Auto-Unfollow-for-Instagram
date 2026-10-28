@@ -1,6 +1,5 @@
 # Packs only the Chrome extension files into dist\ig-unfollow-helper-<version>.zip,
-# ready to upload to the Chrome Web Store. The Playwright bot, your keep list,
-# settings.json, data\ and Excel reports are left out.
+# ready to upload to the Chrome Web Store.
 # Zip entries use forward slashes (Compress-Archive in Windows PowerShell 5.1 writes
 # backslashes, which the Web Store can reject).
 $ErrorActionPreference = 'Stop'
