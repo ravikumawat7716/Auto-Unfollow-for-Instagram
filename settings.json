@@ -1,0 +1,26 @@
+{
+  "delay_seconds": 10,
+  "jitter_percent": 30,
+  "batch_size": 5,
+  "break_min_seconds": 60,
+  "break_max_seconds": 120,
+  "daily_limit": 150,
+  "browse_feed_during_breaks": true,
+  "verify_after_each_batch": true,
+  "keep_verified": false,
+  "my_username": "",
+  "browser": "chrome",
+  "_help": {
+    "delay_seconds": "Wait between unfollows. Randomised by jitter_percent.",
+    "jitter_percent": "How much to randomise waits, in percent (30 means 7 to 13 s for a 10 s wait).",
+    "batch_size": "Unfollows before a longer break.",
+    "break_min_seconds": "Shortest break.",
+    "break_max_seconds": "Longest break.",
+    "daily_limit": "Max unfollows per day. Instagram doesn't publish its limits, so keep this modest.",
+    "browse_feed_during_breaks": "Scroll your home feed during breaks, like a person would.",
+    "verify_after_each_batch": "After each batch, reopen the last profile to check Instagram really kept the unfollow.",
+    "keep_verified": "Never unfollow blue tick accounts.",
+    "my_username": "Your Instagram username. Leave empty, the bot finds it by itself.",
+    "browser": "chrome, msedge or chromium."
+  }
+}

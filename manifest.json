@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Unfollow for Instagram",
+  "version": "2.1.0",
+  "description": "Find Instagram accounts that don't follow you back and unfollow them at a pace you set, with an Excel report.",
+  "minimum_chrome_version": "102",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.instagram.com/*"
+  ],
+  "action": {
+    "default_title": "Auto Unfollow for Instagram",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
+      "js": [
+        "lib/xlsx.full.min.js",
+        "src/igApi.js",
+        "src/core.js",
+        "src/ui.js",
+        "src/report.js",
+        "src/runner.js",
+        "src/panel.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

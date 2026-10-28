@@ -1,0 +1,22 @@
+# Build output (build.ps1)
+dist/
+
+# Playwright bot runtime files
+data/
+keep.txt
+Instagram Unfollow Report.xlsx
+~report.tmp.xlsx
+chrome-profile/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
